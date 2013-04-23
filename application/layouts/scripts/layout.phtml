@@ -5,14 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Bootbusiness | Short description about company">
         <meta name="author" content="Your name">
-        <title>Bootbusiness | Give unique title of the page here</title>
+        <title>WebDetective - Projekt AiR 2013 TI</title>
 
         <?php
         $this->headLink()->appendStylesheet($this->baseUrl("css/bootstrap.min.css"))
                 ->appendStylesheet($this->baseUrl("css/bootstrap-responsive.min.css"))
                 ->appendStylesheet($this->baseUrl("css/font-awesome.css"))
                 ->appendStylesheet($this->baseUrl("css/font-awesome-ie7.css"))
-                ->appendStylesheet($this->baseUrl("css/boot-business.css"));
+                ->appendStylesheet($this->baseUrl("css/boot-business.css"))
+                ;
         echo $this->headLink();
         ?>
     </head>
@@ -23,15 +24,15 @@
             <div class="navbar navbar-fixed-top">
                 <div class="navbar-inner">
                     <div class="container">
-                        <a href="index.html" class="brand brand-bootbus">Bootbusiness</a>
+                        <a href="<?php echo $this->baseUrl();?>" class="brand brand-bootbus">WebDetective</a>
                         <!-- Below button used for responsive navigation -->
-                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+<!--                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
-                        </button>
+                        </button>-->
                         <!-- Start: Primary navigation -->
-                        <div class="nav-collapse collapse">        
+<!--                        <div class="nav-collapse collapse">        
                             <ul class="nav pull-right">
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Products and Services<b class="caret"></b></a>
@@ -65,7 +66,7 @@
                                 <li><a href="signup.html">Sign up</a></li>
                                 <li><a href="signin.html">Sign in</a></li>
                             </ul>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -81,7 +82,7 @@
         <footer>
             <div class="container">
                 <div class="row">
-                    <div class="span2">
+<!--                    <div class="span2">
                         <h4><i class="icon-star icon-white"></i> Products</h4>
                         <nav>
                             <ul class="quick-links">
@@ -154,13 +155,13 @@
                             <input type="text" name="email" placeholder="Email address">
                             <input type="submit" class="btn btn-primary" value="Subscribe">
                         </form>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <hr class="footer-divider"/>
             <div class="container">
                 <p>
-                    &copy; 2012-3000 Bootbusiness, Inc. All Rights Reserved.
+                    &copy; 2013 - Radosław Przebieglec & Szymon Ząbkiewicz, All Rights Reserved.
                 </p>
             </div>
         </footer>

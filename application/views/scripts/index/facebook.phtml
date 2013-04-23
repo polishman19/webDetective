@@ -1,4 +1,32 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Index</b> and script/action name <b>facebook</b></p>
+<div class="container">
+    <div class="page-header">
+        <h2>Wyniki dla Facebook'a</h2>
+    </div>
+    <div class="row">
+        <table class=" table span12 table-striped table-hover">
+            <thead>            
+                <tr>
+                    <td>Zdjęcie</td>
+                    <td>Imię i nazwisko</td>
+                    <td>Płeć</td>
+                    <td>LINK do strony na FB</td>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                foreach ($this->FB['data'] as $value) {
+//                    print_r($value);
+                    echo '<tr>
+                    <td><img src="' . $value['picture']['data']['url'] . '" alt=""/></td>
+                    <td>' . $value['name'] . '</td>
+                    <td>' . $value['gender'] . '</td>
+                    <td><a href='. $value['link'] .'>' . $value['username'] . '</td>
+                     </tr>';
+                }
+                ?>
+            </tbody>
+        </table>
+        <?php print_r($this->FB['paging']); ?>
+    </div>
 </div>
+<!--100001527253181?fields=id,name,cover,first_name,gender,install_type,languages,last_name,link,locale,location,meeting_for,middle_name,name_format,political,quotes,relationship_status,sports,username,website,hometown,work,about,address,age_range,bio,birthday,currency,devices,education,email,favorite_athletes,favorite_teams,inspirational_people,installed,interested_in,religion,significant_other,third_party_id,timezone,updated_time,verified,video_upload_limits-->

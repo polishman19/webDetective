@@ -3,8 +3,9 @@
         <h2>Wyszukiwarka</h2>
     </div>
     <div class="row-fluid">
-        <form class="span12" action="#" method="POST">
-            <input type="text" value="Wpisz człowieka" />
+        <form class="span12" action="<?php echo $this->baseUrl() . '/index/facebook/'; ?>" method="GET">
+            <label>Wpisz poszukiwanego człowieka</label>
+            <input type="text" name="name"/>
             <input type="submit" class="btn btn-primary" value="Szukaj"/>
         </form>
     </div>
