@@ -11,6 +11,10 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="facebook"/>
           <actionMethod actionName="nk"/>
+          <actionMethod actionName="details"/>
+          <actionMethod actionName="google"/>
+          <actionMethod actionName="krs"/>
+          <actionMethod actionName="krsDetails"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
@@ -22,6 +26,9 @@
       </layoutsDirectory>
       <modelsDirectory>
         <modelFile modelName="FBApi"/>
+        <modelFile modelName="NKApi"/>
+        <modelFile modelName="GoogleAPI"/>
+        <modelFile modelName="KrsApi"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
@@ -38,6 +45,18 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="nk"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="details"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="google"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="krs"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="krsDetails"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

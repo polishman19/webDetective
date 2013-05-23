@@ -27,7 +27,7 @@ class Application_Model_FBApi {
 //                    print_r($value);
                     $value = $this->GetDetails($value);
                 }
-                 print_r($search);
+                 //print_r($search);
 
                 return $search;
             } catch (FacebookApiException $e) {

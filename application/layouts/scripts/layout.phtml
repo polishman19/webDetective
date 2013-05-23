@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,12 +25,6 @@
                 <div class="navbar-inner">
                     <div class="container">
                         <a href="<?php echo $this->baseUrl();?>" class="brand brand-bootbus">WebDetective</a>
-                        <!-- Below button used for responsive navigation -->
-<!--                        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>-->
                         <!-- Start: Primary navigation -->
 <!--                        <div class="nav-collapse collapse">        
                             <ul class="nav pull-right">
@@ -166,13 +160,11 @@
             </div>
         </footer>
         <!-- End: FOOTER -->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="js/boot-business.js"></script>
         <?php
         $this->headScript()->appendFile($this->baseUrl("js/jquery.min.js"))
                 ->appendFile($this->baseUrl("js/bootstrap.min.js"))
-                ->appendFile($this->baseUrl("js/boot-business.js"));
+                ->appendFile($this->baseUrl("js/boot-business.js"))
+                ->appendFile($this->baseUrl("js/detailsDownloader.js"));
         echo $this->headScript();
         ?>
     </body>

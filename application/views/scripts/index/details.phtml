@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="page-header">
+        <h1 id="name"><?php echo $this->Results['data'][0][1] . " " . $this->Results['data'][2][1]; ?></h1>
+    </div>
+    <div class="row">
+        <div class="span6">
+
+            <div class="label error">Tu będzie większe zdjęcie</div><br/>
+            <?php echo $this->Results['photo']; ?>
+
+        </div>
+        <div class="span6">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <?php foreach ($this->Results['data'] as $res): ?>
+                        <tr>
+                            <td><?php echo $res[0]; ?></td>
+                            <td><?php echo $res[1]; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h2>Uczeszczane szkoly</h2>
+        </div>
+        <div class="span12">
+            <table  class="table table-striped table-hover">
+                <thead>            
+                    <tr>
+                        <td>Szkoła</td>
+                        <td>Klasa</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->Results['schools'] as $res): ?>
+                        <tr>
+                            <td><?php echo $res[0]; ?></td>
+                            <td><?php echo $res[1]; ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="span6">
+            <h2>Wyniki z google</h2>
+        </div>
+        <div class="span6">
+            <h2>Wyniki z KRS</h2>
+        </div>
+        <div id="googleResults" class="span6">
+            <!--<a href="<?php echo $this->url(array('controller' => "index", "action" => "google")); ?>" class="btn btn-link google-search">Szukaj w google</a>-->
+        </div>
+        <div class="span6">
+            <div class="alert-error">Tu będą wyniki z KRS</div><br/>
+            <a href="<?php echo $this->url(array('controller' => "index", "action" => "krs-details")); ?>" class="btn btn-link krs-ajax">Szukaj w KRS</a>
+            <input type="text" name="captcha" id="captcha"/>
+            <div id="krsResults">
+            </div>
+        </div>
+    </div>
+</div>

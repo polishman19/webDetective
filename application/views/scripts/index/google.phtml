@@ -1,0 +1,16 @@
+<table  class="table table-striped table-hover">
+    <thead>            
+        <tr>
+            <td>Link</td>
+            <td>Opis</td>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($this->Results as $res): ?>
+            <tr>
+                <td><?php echo $res[0]; ?></td>
+                <td><?php echo $res[1]; ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
