@@ -15,11 +15,20 @@ class IndexController extends Zend_Controller_Action
 
     public function facebookAction()
     {
-        $name = $this->_getParam("name");
+        $name = $this->_getParam('name');
         $name = str_replace(' ', '+', $name);
-        //echo $name;
+        
+        $page = $this->_getParam('page');
+        if(!isset($page))
+            $page = 0;
+        
+        $page *= 10;
         $model = new Application_Model_FBApi();
-        $this->view->FB = $model->GetPeopleList($name);
+        $model->login();
+        $this->view->FB = $model->search($name, $page);
+        $page /= 10;
+        $this->view->Name = $name;
+        $this->view->Page = $page;
     }
 
     public function nkAction()
@@ -115,8 +124,33 @@ class IndexController extends Zend_Controller_Action
         $this->view->Url = $url;
     }
 
+    public function fbDetailsAction()
+    {
+        $url = $this->_getParam("url");
+        $model = new Application_Model_FBApi();
+        $model->login();
+        $this->view->Results = $model->getDetails($url);
+        
+//        echo "<pre>";
+//        print_r($this->view->Results);
+//        echo "</pre>";
+    }
+
+    public function fbGetPhotoAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $url = $this->_getParam("url");
+        $model = new Application_Model_FBApi();
+        $model->login();
+        $this->view->Photo = $model->getPhoto($url);
+    }
+
 
 }
+
+
+
+
 
 
 

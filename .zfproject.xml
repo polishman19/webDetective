@@ -18,6 +18,8 @@
           <actionMethod actionName="getPhoto"/>
           <actionMethod actionName="getPhotoInfo"/>
           <actionMethod actionName="photoInfo"/>
+          <actionMethod actionName="fbDetails"/>
+          <actionMethod actionName="fbGetPhoto"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
       </controllersDirectory>
@@ -69,6 +71,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="photoInfo"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="fbDetails"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="fbGetPhoto"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

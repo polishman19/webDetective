@@ -42,6 +42,20 @@ $(document).ready(function(){
             alert("Failure");
         }
     });
+    var link = $("#fb-photo-link").text();
+    $.ajax({
+        type     : "GET",
+        url      : "http://localhost/webDetective/public/index/fb-get-photo?url=" + link,
+        success  : function(data) {
+            $("#image-container").empty().append(data);
+            var url = $("#image-container img").attr('src');
+//            alert(url);
+            getImageData(url);
+        },
+        failure : function(){
+            alert("Failure");
+        }
+    });
 //    var a = $("#name").text();
 //    var url ="http://localhost/webDetective/public/index/krs?name=" + a;
 //    $.ajax({

@@ -3,44 +3,40 @@
         <h2>Wyniki dla Facebook'a</h2>
     </div>
     <div class="row">
-        <?php if (isset($this->FB['data'])  && count($this->FB['data']) > 0): ?>
-            <table class=" table span12 table-striped table-hover">
-                <thead>            
-                    <tr>
-                        <td>Zdjęcie</td>
-                        <td>Imię i nazwisko</td>
-                        <td>Płeć</td>
-                        <td>LINK do strony na FB</td>
-                        <td>Wyszukiwanie</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    foreach ($this->FB['data'] as $value) {
-                        echo '<tr>
-                    <td><img src="' . $value['picture']['data']['url'] . '" alt=""/></td>
-                    <td>' . $value['name'] . '</td>
-                    <td>' . $value['gender'] . '</td>
-                    <td><a href=' . $value['link'] . '>' . $value['username'] . '</td>
-                        <td><a href="' . $value['link'] . '" class="btn btn-link ajax-test">Więcej danych</a></td>
-                     </tr>';
-                    }
-                    ?>
-                </tbody>
-            </table>
-        <div class="printArea"></div>
-        <?php else: print_r($this->FB); ?>
-        <?php endif; ?>
-        <?php
-//        if (isset($this->FB['paging']['next'])) {
-//            echo '<a href="' . $this->FB['paging']['next'] . '">Następna strona</a>';
-//        }
-//        if (isset($this->FB['paging']['next'])) {
-//            echo '<a href="' . $this->FB['paging']['prev'] . '">Poprzednia strona</a>';
-//        }
-//        
-        ?>
-<?php // print_r($this->FB['paging']);  ?>
+        <div class='span12'>
+            <?php if (isset($this->FB) && count($this->FB) > 0): ?>
+                <table class=" table table-striped table-hover">
+                    <thead>            
+                        <tr>
+                            <td>Zdjęcie</td>
+                            <td>Imię i nazwisko</td>
+                            <td>Opis</td>
+                            <td>LINK do strony na FB</td>
+                            <td>Wyszukiwanie</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->FB as $value): ?>
+                            <tr>
+                                <td><?php echo $value['photo']; ?></td>
+                                <td><?php echo $value['name']; ?></td>
+                                <td><?php echo $value['desc']; ?></td>
+                                <td><a href="<?php echo $value['link']; ?>">Strona na Facebook</td>
+                                <td><a href="<?php echo $this->baseUrl() . '/index/fb-details?url=' . $value['link']; ?>" class="btn btn-link ajax-test">Więcej danych</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <ul class="pager">
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
+                    <li class="next"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page + 1); ?>">Następna →</a></li>
+                </ul>
+            <?php else: ?>
+                <h2>Brak wyników!</h2>
+                <ul class="pager">
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
+                </ul>
+            <?php endif; ?>
+        </div>
     </div>
 </div>
-<!--100001527253181?fields=id,name,cover,first_name,gender,install_type,languages,last_name,link,locale,location,meeting_for,middle_name,name_format,political,quotes,relationship_status,sports,username,website,hometown,work,about,address,age_range,bio,birthday,currency,devices,education,email,favorite_athletes,favorite_teams,inspirational_people,installed,interested_in,religion,significant_other,third_party_id,timezone,updated_time,verified,video_upload_limits-->
