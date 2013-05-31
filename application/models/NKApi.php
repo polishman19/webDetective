@@ -2,7 +2,7 @@
 
 class Application_Model_NKApi {
 
-    function createPostString($aPostFields) {
+    private function createPostString($aPostFields) {
         foreach ($aPostFields as $key => $value) {
             $aPostFields[$key] = urlencode($key) . '=' . urlencode($value);
         }
@@ -80,9 +80,6 @@ class Application_Model_NKApi {
         foreach ($query as $result) {
             $var = $result->getAttributeNode("href");
             $link = $var->value;
-//            echo "<pre>";
-//            print_r($link);
-//            echo "</pre>";
         }
 
 
@@ -110,7 +107,7 @@ class Application_Model_NKApi {
         return array("photo" => $photo, "desc" => $desc);
     }
 
-    public function Search($name, $page = 1) {
+    public function search($name, $page = 1) {
         header('Content-Type: text/html; charset=utf-8');
 
         $this->init();
@@ -149,9 +146,6 @@ class Application_Model_NKApi {
         $i = 0;
 
         foreach ($query as $result) {
-//            echo "<pre>";
-//            print_r($result);
-//            echo "</pre>";
             if (!isset($results[$i])) {
                 $results[$i] = array();
             }
@@ -174,12 +168,8 @@ class Application_Model_NKApi {
         $query = $dom->query('.schools.user_schools li.school');
         $schools = array();
         foreach ($query as $result) {
-            //$schools = $this->prepareSchools($result);
             array_push($schools, $this->prepareSchools($result));
         }
-//        echo "<pre>";
-//        print_r($schools);
-//        echo "</pre>";
 
         $query = $dom->query('.gora .profil_avatar .avatar_new_photo.avatar_single a');
         foreach ($query as $result) {
@@ -211,10 +201,6 @@ class Application_Model_NKApi {
 
             array_push($classes, $class);
         }
-//        $a = array("school" => $school, "classes" => $classes);
-////        echo "<pre>";
-////print_r($a);
-////echo "</pre>";
 
         return array("school" => $school, "classes" => $classes);
     }

@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="page-header">
+        <h2>Wyniki dla nk.pl</h2>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <?php if (isset($this->Results) && count($this->Results) > 0): ?>
+                <table  class=" table table-striped table-hover">
+                    <thead>            
+                        <tr>
+                            <td>Zdjęcie</td>
+                            <td>Imię i nazwisko</td>
+                            <td>Miasto</td>
+                            <td>Wyszukiwanie</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($this->Results as $res): ?>
+                            <tr>
+                                <td><?php echo $res[0]; ?></td>
+                                <td><?php echo strip_tags($res[1]); ?></td>
+                                <td><?php echo $res[3]; ?></td>
+                                <td><a href="<?php echo $this->url(array("controller" => "naszaklasa", "action" => "details")) . "?link=" . $res[2]; ?>" class="btn btn-link">Więcej danych</a></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+                <ul class="pager">
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>">
+                        <a href="<?php echo $this->baseUrl() . '/naszaklasa/index?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a>
+                    </li>
+                    <li class="next">
+                        <a href="<?php echo $this->baseUrl() . '/naszaklasa/index?name=' . $this->Name . '&page=' . ($this->Page + 1); ?>">Następna →</a>
+                    </li>
+                </ul>
+
+            <?php else: ?>
+                <h2>Brak wyników!</h2>
+                <ul class="pager">
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>">
+                        <a href="<?php echo $this->baseUrl() . '/naszaklasa/index?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a>
+                    </li>
+                </ul>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>

@@ -13,7 +13,7 @@ class Application_Model_FBApi {
     private $uagent = 'Mozilla/4.0 (compatible; MSIE 5.0; S60/3.0 NokiaN73-1/2.0(2.0617.0.0.7) Profile/MIDP-2.0 Configuration/CLDC-1.1)';
     private $cookies = 'fbcookies.txt';
 
-    public function parse_inputs($html) {
+    private function parse_inputs($html) {
         $dom = new DOMDocument;
         @$dom->loadxml($html);
         $inputs = $dom->getElementsByTagName('input');
@@ -24,7 +24,7 @@ class Application_Model_FBApi {
      * @return form action url
      */
 
-    public function parse_action($html) {
+    private function parse_action($html) {
         $dom = new DOMDocument;
         @$dom->loadxml($html);
         $form_action = $dom->getElementsByTagName('form')->item(0)->getAttribute('action');
@@ -113,14 +113,6 @@ class Application_Model_FBApi {
             break;
         }
         
-//        $res = $dom->query(".profpic img");
-//
-//        foreach ($res as $element) {
-//            //$var = $element->getAttributeNode("href");
-//            $result['photo'] = $this->getHTML($element);
-//            break;
-//        }
-        
         $res = $dom->query(".profileName");
 
         foreach ($res as $element) {
@@ -158,13 +150,11 @@ class Application_Model_FBApi {
             $res2 = $dom2->query("th");
             foreach ($res2 as $element2) {
                 $temp = $this->getHTML($element2);
-                //$this->debug($temp);
                 $key = strip_tags($temp);
             }
             $res2 = $dom2->query("td");
             foreach ($res2 as $element2) {
                 $temp = $this->getHTML($element2);
-                //$this->debug($temp);
                 $value = strip_tags($temp);
             }
             $result[$key] = $value;
@@ -211,12 +201,6 @@ class Application_Model_FBApi {
         return $result;
     }
 
-    private function debug($node) {
-        echo "<pre>";
-        print_r($node);
-        echo '</pre>';
-    }
-
     private function getJobs($dom) {
         $result = array();
         $res = $dom->query(".eduwork div");
@@ -234,15 +218,6 @@ class Application_Model_FBApi {
             }
         }
         return $result;
-    }
-
-    private function getValueFromTable($row) {
-        $dom = new Zend_Dom_Query($row);
-        $res = $dom->query("td");
-
-        foreach ($res as $element) {
-            return strip_tags($this->getHTML($element));
-        }
     }
 
     private function getFamily($dom) {
@@ -345,7 +320,6 @@ class Application_Model_FBApi {
                     $post_params .= $input->getAttribute('name') . '=' . urlencode($input->getAttribute('value')) . '&';
             }
         }
-        //echo "[i] Using these login parameters: $post_params";
         /*
          * Login using previously collected form parameters
          */
@@ -369,7 +343,7 @@ class Application_Model_FBApi {
      * grab and return the homepage
      */
 
-    public function grab_home() {
+    private function grab_home() {
 
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_COOKIEJAR, $this->cookies);
@@ -411,7 +385,6 @@ class Application_Model_FBApi {
         $loggedout = curl_exec($ch);
 
         curl_close($ch);
-        echo "\n[i] Logged out.\n";
     }
 
 }

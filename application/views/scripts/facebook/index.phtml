@@ -22,19 +22,19 @@
                                 <td><?php echo $value['name']; ?></td>
                                 <td><?php echo $value['desc']; ?></td>
                                 <td><a href="<?php echo $value['link']; ?>">Strona na Facebook</td>
-                                <td><a href="<?php echo $this->baseUrl() . '/index/fb-details?url=' . $value['link']; ?>" class="btn btn-link ajax-test">Więcej danych</a></td>
+                                <td><a href="<?php echo $this->baseUrl() . '/facebook/fb-details?url=' . $value['link']; ?>" class="btn btn-link ajax-test">Więcej danych</a></td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
                 <ul class="pager">
-                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
-                    <li class="next"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page + 1); ?>">Następna →</a></li>
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/facebook/index?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
+                    <li class="next"><a href="<?php echo $this->baseUrl() . '/facebook/index?name=' . $this->Name . '&page=' . ($this->Page + 1); ?>">Następna →</a></li>
                 </ul>
             <?php else: ?>
                 <h2>Brak wyników!</h2>
                 <ul class="pager">
-                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/index/facebook?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
+                    <li class="previous <?php if ($this->Page == 0) echo 'disabled'; ?>"><a href="<?php echo $this->baseUrl() . '/facebook/index?name=' . $this->Name . '&page=' . ($this->Page - 1); ?>">← Poprzednia</a></li>
                 </ul>
             <?php endif; ?>
         </div>
