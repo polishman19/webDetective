@@ -13,8 +13,8 @@ class Application_Model_NKApi {
         header('Content-Type: text/html; charset=utf-8');
 
         # Config
-        $login = 'j_rejwert67';
-        $pass = 'testDeveloper';
+        $login = 'xxx';
+        $pass = 'xxx';
 # End Config
         # Other..
         $this->cookie_file = '/cookies.txt';

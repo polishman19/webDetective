@@ -107,6 +107,7 @@ class IndexController extends Zend_Controller_Action
     {
         $this->_helper->layout->disableLayout();
         $url = $this->_getParam("url");
+        $url = str_replace('https://', 'http://', $url);
         $localURL = "temp.jpg";
         copy($url, $localURL);
         $this->view->Results = exif_read_data($localURL);

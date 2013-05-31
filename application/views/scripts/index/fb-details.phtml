@@ -3,14 +3,17 @@
         <h1 id="name"><?php echo $this->Results['name']; ?></h1>
     </div>
     <div class="row">
+
         <div class="span6">
-            <div id="image-container">
+            <div id="image-container" style='text-align:center;'>
                 <a style="display:none;" id="fb-photo-link"><?php echo $this->Results['link']; ?></a>
-                <img src="<?php echo $this->baseUrl("img/loading.gif"); ?>" alt="Loading...">
+                <img src="<?php echo $this->baseUrl("img/loading.gif"); ?>" alt="Loading..." >
             </div>
-            <blockquote>
-                <?php echo $this->Results['bio']['desc']; ?>
-            </blockquote>
+            <?php if (isset($this->Results['bio']['desc'])): ?>
+                <blockquote>
+                    <?php echo $this->Results['bio']['desc']; ?>
+                </blockquote>
+            <?php endif; ?>
         </div>
         <div class="span6">
             <h2>Profil</h2>
@@ -131,20 +134,27 @@
         </div>
         <div class="span6">
             <?php if (count($this->Results['family']) > 0): ?>
-            <div class='row'>
-                <?php foreach ($this->Results['family'] as $member): ?>
-                    <div class='span2'>
-                        <div class='well'>
-                        <?php echo $member['photo']; ?>
-                        <h3><?php echo $member['name']; ?></h3>
-                        <p><?php echo $member['relation']; ?></p>
+                <div class='row'>
+                    <?php foreach ($this->Results['family'] as $member): ?>
+                        <div class='span3'>
+                            <div class='well'>
+                                <p><?php echo $member['relation']; ?></p>
+                                <?php echo $member['photo']; ?>
+                                <h3><?php echo $member['name']; ?></h3>
+                                <a href="<?php echo $member['link']; ?>">Idź do strony na Facebook'u</a>
+                            </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                    <?php endforeach; ?>
+                </div>
             <?php else: ?>
-            <h2>Brak wyników</h2>
+                <h2>Brak wyników</h2>
             <?php endif; ?>
+        </div>
+        <div class="span6">
+            <h2>Tagi ze zdjęcia</h2>
+            <div id="tagResults">
+                <img src="<?php echo $this->baseUrl("img/loading.gif"); ?>" alt="Loading...">
+            </div>
         </div>
     </div>
 </div>

@@ -5,8 +5,8 @@ class Application_Model_FBApi {
      * Required parameters
      */
 
-    private $email = 'polishman19@gmail.com';
-    private $pass = 'postawa7';
+    private $email = 'xxx';
+    private $pass = 'xxx';
     /*
      * Optional parameters
      */
