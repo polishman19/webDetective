@@ -35,12 +35,13 @@ class Application_Model_GoogleAPI {
             if (!isset($results[$i])) {
                 $results[$i] = array();
             }
-                        $var = $result->getAttributeNode("href");
+            $var = $result->getAttributeNode("href");
             $result->setAttributeNode(new DOMAttr("href", "http://www.google.pl" . $var->value));
+            if (strpos($this->getHTML($result), 'Obrazy dla ') === FALSE) {
+                array_push($results[$i], $this->getHTML($result));
 
-            array_push($results[$i], $this->getHTML($result));
-
-            $i++;
+                $i++;
+            }
         }
         $query = $dom->query('#ires .g .s .st');
         $i = 0;
@@ -55,9 +56,10 @@ class Application_Model_GoogleAPI {
 //        echo "<pre>";
 //        print_r($results);
 //        echo "</pre>";
-        
+
         return $results;
     }
+
     private function getHTML($node) {
         header('Content-Type: text/html; charset=utf-8');
 
@@ -66,5 +68,6 @@ class Application_Model_GoogleAPI {
         $newdoc->appendChild($newdoc->importNode($cloned, TRUE));
         return $newdoc->saveHTML();
     }
+
 }
 

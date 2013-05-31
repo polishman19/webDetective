@@ -39,9 +39,7 @@ class IndexController extends Zend_Controller_Action
 
         $model = new Application_Model_NKApi();
         $this->view->Results = $model->getDetails("http://nk.pl" . $link);
-//        echo "<pre>";
-//        print_r($this->view->Results);
-//        echo "</pre>";
+        $this->view->WebSite = "http://nk.pl" . $link;
     }
 
     public function googleAction()
@@ -53,6 +51,10 @@ class IndexController extends Zend_Controller_Action
         $model = new Application_Model_GoogleAPI();
 
         $this->view->Results = $model->search($name);
+        
+//        echo "<pre>";
+//        print_r($this->view->Results);
+//        echo "</pre>";
     }
 
     public function krsAction()
@@ -64,7 +66,7 @@ class IndexController extends Zend_Controller_Action
         $model = new Application_Model_KrsApi();
 
         $this->view->Results = $model->getCaptcha();
-        
+
         //print_r($this->view->Results);
     }
 
@@ -75,11 +77,42 @@ class IndexController extends Zend_Controller_Action
         $name = $this->_getParam("name");
         $captcha = $this->_getParam("captcha");
         $hidden = $this->_getParam("hidden");
-        
+
         $model = new Application_Model_KrsApi();
 
         $this->view->Results = $model->getDetailed($name, $captcha, $hidden);
+    }
 
+    public function getPhotoAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $link = $this->_getParam("link");
+        $model = new Application_Model_NKApi();
+
+        $this->view->Results = $model->getImage($link);
+
+        //print_r($this->view->Results);
+    }
+
+    public function getPhotoInfoAction()
+    {
+        $this->_helper->layout->disableLayout();
+        $url = $this->_getParam("url");
+        $localURL = "temp.jpg";
+        copy($url, $localURL);
+        $this->view->Results = exif_read_data($localURL);
+        unlink($localURL);
+    }
+
+    public function photoInfoAction()
+    {
+        $url = $this->_getParam("url");
+        $url = str_replace('https://', 'http://', $url);
+        $localURL = "temp.jpg";
+        copy($url, $localURL);
+        $this->view->Results = exif_read_data($localURL);
+        unlink($localURL);
+        $this->view->Url = $url;
     }
 
 

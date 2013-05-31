@@ -1,0 +1,24 @@
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <td><strong>Właściwość</strong></td>
+            <td><strong>Wartość</strong></td>
+        </tr>
+    </thead>
+    <?php foreach ($this->Results as $key => $value): ?>
+        <tr>
+            <td><?php echo $key; ?></td>
+            <td>
+                <?php
+                if (is_array($value)) {
+                    echo "<pre>";
+                    print_r($value);
+                    echo "</pre>";
+                }
+                else
+                    echo $value;
+                ?>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>

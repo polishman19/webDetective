@@ -9,7 +9,6 @@
                     <td>Zdjęcie</td>
                     <td>Imię i nazwisko</td>
                     <td>Miasto</td>
-                    <td>LINK do strony na nk</td>
                     <td>Wyszukiwanie</td>
                 </tr>
             </thead>
@@ -17,9 +16,8 @@
                 <?php foreach ($this->Results as $res): ?>
                     <tr>
                         <td><?php echo $res[0]; ?></td>
-                        <td><?php echo $res[1]; ?></td>
+                        <td><?php echo strip_tags($res[1]); ?></td>
                         <td><?php echo $res[3]; ?></td>
-                        <td><a href="<?php echo $res[2]; ?>">Przejdź do profilu na nk.pl</td>
                         <td><a href="<?php echo $this->url(array("controller" => "index", "action" => "details"))."?link=" . $res[2];?>" class="btn btn-link">Więcej danych</a></td>
                     </tr>
                 <?php endforeach; ?>

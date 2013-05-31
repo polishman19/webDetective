@@ -2,20 +2,21 @@
     <div class="page-header">
         <h2>Wyszukiwarka</h2>
     </div>
-    <div class="row-fluid">
-        <form class="span12" action="<?php echo $this->baseUrl() . '/index/facebook/'; ?>" method="GET">
-            <label>Wpisz poszukiwanego człowieka (facebook):</label>
-            <input type="text" name="name" class="input-large search-query"/>
-            <input type="submit" class="btn btn-primary" value="Szukaj"/>
-        </form>
-    </div>
-    <div class="row-fluid">
+    <div class="row">
         <form class="span12" action="<?php echo $this->baseUrl() . '/index/nk/'; ?>" method="GET">
-            <label>Wpisz poszukiwanego człowieka (nasza-klasa):</label>
+            <label>Wpisz poszukiwanego człowieka:</label>
             <input type="text" name="name" class="input-large search-query"/>
             <input type="submit" class="btn btn-primary" value="Szukaj"/>
         </form>
     </div>
-    <!--<a href="<?php echo $this->url(array('controller' => "index", "action" => "nk")); ?>" class="btn btn-link nk-test">Więcej danych</a>-->
-    
+    <div class="page-header">
+        <h2>Analizator tagów obrazów</h2>
+    </div>
+    <div class="row">
+        <form class="span12" action="<?php echo $this->baseUrl() . '/index/photo-info/'; ?>" method="GET">
+            <label>Wpisz adres obrazu do zbadania:</label>
+            <input type="text" name="url" class="input-large search-query"/>
+            <input type="submit" class="btn btn-primary" value="Badaj"/>
+        </form>
+    </div>
 </div>
