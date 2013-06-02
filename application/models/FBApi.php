@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Klasa pobierająca i operująca na danych osobowych z portalu facebook.com.
+ */
 class Application_Model_FBApi {
     /*
      * Required parameters
@@ -20,10 +23,6 @@ class Application_Model_FBApi {
         return($inputs);
     }
 
-    /*
-     * @return form action url
-     */
-
     private function parse_action($html) {
         $dom = new DOMDocument;
         @$dom->loadxml($html);
@@ -34,6 +33,13 @@ class Application_Model_FBApi {
         return($form_action);
     }
 
+    /**
+     * Wyszukuje podstawowych informacji o osobach o podanym imieniu i nazwisku.
+     * 
+     * @param $name Wyszukiwane imię i nazwisko.
+     * @param $offset Numer podstrony wyników.
+     * @return Tablica wyników wyszukiwania. Każdy wiersz zawiera tablicę z danymi użytkownika.
+     */
     public function search($name, $offset) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_COOKIEJAR, $this->cookies);
@@ -55,6 +61,12 @@ class Application_Model_FBApi {
         return $results;
     }
     
+    /**
+     * Pobiera adres zdjęcia użytkonika.
+     * 
+     * @param string $url URL podstrony użytkownika portalu.
+     * @return string Adres zdjęcia użytkownika.
+     */
     public function getPhoto($url){
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_COOKIEJAR, $this->cookies);
@@ -78,6 +90,12 @@ class Application_Model_FBApi {
     
     }
     
+    /**
+     * Pobiera dokładne dane o użytkowniku.
+     * 
+     * @param $url URL strony użytkownika portalu.
+     * @return Tablica asocjacyjna zawierająca informacje z pobranymi danymi osobowymi.
+     */
     public function getDetails($url) {
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_COOKIEJAR, $this->cookies);
@@ -300,6 +318,10 @@ class Application_Model_FBApi {
         return $newdoc->saveHTML();
     }
 
+    /**
+     * Zalogowuje się do portalu facebook poprzez przesłanie odpowiednio
+     * spreparowanych danych.
+     */
     public function login() {
         /*
          * Grab login page and parameters
@@ -360,6 +382,9 @@ class Application_Model_FBApi {
         return($html);
     }
 
+    /**
+     * Wylogowuje z portalu facebook.com.
+     */
     public function logout() {
         $dom = new DOMDocument;
         @$dom->loadxml(grab_home());

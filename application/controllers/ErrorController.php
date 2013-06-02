@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * Klasa kontrolera błędów.
+ */
 class ErrorController extends Zend_Controller_Action
 {
 
+    /**
+     * Akcja wyświetlające błędy zarówno związane z niepoprawnym
+     * adresem jak i błędami działania aplikacji.
+     */
     public function errorAction()
     {
         $errors = $this->_getParam('error_handler');
@@ -43,6 +50,11 @@ class ErrorController extends Zend_Controller_Action
         $this->view->request   = $errors->request;
     }
 
+    /**
+     * Zwraca dziennik zdarzeń aplikacji.
+     * 
+     * @return Zasób reprezentujący dziennik lub false jeśli dziennik nie istnieje.
+     */
     public function getLog()
     {
         $bootstrap = $this->getInvokeArg('bootstrap');
