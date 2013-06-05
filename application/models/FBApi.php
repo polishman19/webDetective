@@ -279,6 +279,7 @@ class Application_Model_FBApi {
             $result['name'] = $this->getHTML($element);
             $var = $element->getAttributeNode("href");
             $temp = explode('?', $var->value);
+            //print_r($var->value);
             $result['link'] = 'http://m.facebook.com' . $temp[0] . '?v=info';
         }
 
