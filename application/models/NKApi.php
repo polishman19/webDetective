@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Klasa pobierająca i operująca na danych osobowych z portalu nk.pl.
+ */
 class Application_Model_NKApi {
 
     private function createPostString($aPostFields) {
@@ -61,6 +63,12 @@ class Application_Model_NKApi {
         curl_close($this->c);
     }
 
+    /**
+     * Pobiera adres zdjęcia użytkownika wzraz z opisem.
+     * 
+     * @param $link Link do podstrony w portalu.
+     * @return Tablica 2-elementowa ('photo' => adres zdjecia, 'desc' => opis)
+     */
     public function getImage($link) {
         header('Content-Type: text/html; charset=utf-8');
 
@@ -107,6 +115,13 @@ class Application_Model_NKApi {
         return array("photo" => $photo, "desc" => $desc);
     }
 
+    /**
+     * Wyszukuje podstawowych informacji o osobach o podanym imieniu i nazwisku.
+     * 
+     * @param $name Wyszukiwane imię i nazwisko.
+     * @param $page Numer podstrony wyników.
+     * @return Tablica wyników wyszukiwania. Każdy wiersz zawiera tablicę z danymi użytkownika.
+     */
     public function search($name, $page = 1) {
         header('Content-Type: text/html; charset=utf-8');
 
@@ -121,7 +136,13 @@ class Application_Model_NKApi {
         curl_close($this->c);
         return $this->prepareResults($result);
     }
-
+    
+    /**
+     * Pobiera dokładne dane o użytkowniku.
+     * 
+     * @param $url URL strony użytkownika portalu.
+     * @return Tablica zawierająca informacje o użytkowniku.
+     */
     public function getDetails($url) {
         header('Content-Type: text/html; charset=utf-8');
 

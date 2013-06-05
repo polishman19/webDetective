@@ -1,7 +1,15 @@
 <?php
-
+/**
+ * Klasa pobierająca i operująca na danych z wyszukiwarki google.com
+ */
 class Application_Model_GoogleAPI {
 
+    /**
+     * Zwraca wyniki wyszukiwania w google.com
+     * 
+     * @param $name Wyszukiwane imię i nazwisko
+     * @return Tablica wyników wyszukiwania.
+     */
     public function search($name) {
         $this->headers = array(
             'User-Agent: Mozilla/5.0 (Windows; U; Windows NT 6.1; pl; rv:1.9.2.16) Gecko/20110319 Firefox/3.6.16',

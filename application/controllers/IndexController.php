@@ -1,21 +1,31 @@
 <?php
 
-class IndexController extends Zend_Controller_Action
-{
+/**
+ * Domyślny kontroler aplikacji.
+ */
+class IndexController extends Zend_Controller_Action {
 
-    public function init()
-    {
+    /**
+     * Inicjalizacja kontrolera.
+     */
+    public function init() {
         /* Initialize action controller here */
     }
 
-    public function indexAction()
-    {
+    /**
+     * Domyślna akcja prezentująca ekran główny aplikacji.
+     */
+    public function indexAction() {
         // action body
     }
 
-
-    public function googleAction()
-    {
+    /**
+     * Akcja pobierająca dane o poszykiwanej osobie z wyników
+     * wyszykiwarki google.com
+     * 
+     * @param name Imię i nazwisko szukanej osoby
+     */
+    public function googleAction() {
         // action body
         $this->_helper->layout->disableLayout();
         $name = $this->_getParam("name");
@@ -25,8 +35,14 @@ class IndexController extends Zend_Controller_Action
         $this->view->Results = $model->search($name);
     }
 
-    public function getPhotoInfoAction()
-    {
+    /**
+     * Akcja pobierająca meta dane z plików
+     * graficznych JPEG lub TIFF. Dane pibierane są z
+     * nagłówków EXIF.
+     * 
+     * @param url Adres zdjęcia.
+     */
+    public function getPhotoInfoAction() {
         $this->_helper->layout->disableLayout();
         $url = $this->_getParam("url");
         $url = str_replace('https://', 'http://', $url);
@@ -36,8 +52,14 @@ class IndexController extends Zend_Controller_Action
         unlink($localURL);
     }
 
-    public function photoInfoAction()
-    {
+     /**
+     * Akcja pobierająca meta dane z plików
+     * graficznych JPEG lub TIFF. Dane pibierane są z
+     * nagłówków EXIF.
+     * 
+     * @param url Adres zdjęcia.
+     */
+    public function photoInfoAction() {
         $url = $this->_getParam("url");
         $url = str_replace('https://', 'http://', $url);
         $localURL = "temp.jpg";
